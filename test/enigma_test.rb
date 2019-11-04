@@ -33,13 +33,6 @@ class TestEnigma < Minitest::Test
   end
 
   def test_enigma_decrypt
-    skip
-    unencrypted = {
-      decryption: "hello world",
-      key: "02715",
-      date: "040895"
-    }
-    assert_equal unencrypted, @enigma.decrypt("keder ohulw", "02715", "040895")
+    assert_equal "hello world", @enigma.decrypt("keder ohulw", "02715", "040895")
   end
-
 end
