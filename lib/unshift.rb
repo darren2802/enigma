@@ -1,5 +1,4 @@
 class Unshift
-
   def self.unshift_chars(characters, shifts)
     char_indexed = Shift.char_index(characters)
     chars_unshifted = char_indexed.each_value do |value|
@@ -9,5 +8,4 @@ class Unshift
       end
     end
   end
-
 end
