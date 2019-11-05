@@ -22,6 +22,19 @@ class Enigma
     return_val(:decryption, text, key, date)
   end
 
+  def crack(ciphertext, date = generate_date)
+    counter = 0
+    potential_key = ''
+    text = ''
+    loop do
+      counter += 1
+      potential_key = generate_key_crack(counter)
+      text = decrypt(ciphertext, potential_key, date)[:decryption]
+      break if text[-4..-1] == ' end'
+    end
+    return_val(:decryption, text, key, date)
+  end
+
   def return_val(type, text, key, date)
     return_hash = Hash.new()
     return_hash[type] = text
@@ -62,10 +75,14 @@ class Enigma
     rand.to_s[2..6]
   end
 
+  def generate_key_crack(counter)
+    '%05d' % counter
+  end
+
   def keys(key)
     keys = []
     key.chars.each_cons(2) { |char| keys << char.join }
-    keys.map { |key| key.to_i }
+    keys.map { |this_key| this_key.to_i }
   end
 
   def generate_date

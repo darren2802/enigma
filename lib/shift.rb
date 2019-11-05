@@ -1,11 +1,12 @@
 class Shift
+
   def self.shifts(keys, offsets)
     zipped = keys.zip(offsets)
     zipped.map { |zip| zip.sum }
   end
 
   def self.shift_chars(characters, shifts)
-    char_indexed = char_index(characters)
+    char_indexed = self.char_index(characters)
     chars_shifted = char_indexed.each_value do |value|
       if value[:encrypt?] == 'y'
         value[:index] += shifts[0]
