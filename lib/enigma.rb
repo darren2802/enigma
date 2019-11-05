@@ -65,7 +65,7 @@ class Enigma
   def keys(key)
     keys = []
     key.chars.each_cons(2) { |char| keys << char.join }
-    keys.map { |key| key.to_i }
+    keys.map { |this_key| this_key.to_i }
   end
 
   def generate_date
