@@ -16,10 +16,12 @@ message_file.close
 enigma = Enigma.new
 key = enigma.generate_key
 date = enigma.generate_date
-ciphered = enigma.encrypt(message_text)
+ciphered = enigma.encrypt(message_text, key, date)
 
 cipher_file = File.open(file_cipher_text, 'w')
 cipher_file.write(ciphered)
 cipher_file.close
 
 puts "Created '#{file_cipher_text}' with the key #{key} and date #{date}"
+
+# ruby ./lib/encrypt.rb ./lib/message.txt ./lib/encrypted.txt
