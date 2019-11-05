@@ -32,7 +32,7 @@ class Enigma
       text = decrypt(ciphertext, potential_key, date)[:decryption]
       break if text[-4..-1] == ' end'
     end
-    return_val(:decryption, text, key, date)
+    return_val(:decryption, text, potential_key, date)
   end
 
   def return_val(type, text, key, date)
