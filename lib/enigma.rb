@@ -9,7 +9,8 @@ class Enigma
     keys = keys(key)
     offsets = offsets(date)
     shifts = Shift.shifts(keys, offsets)
-    cipher(characters, shifts)
+    text = cipher(characters, shifts)
+    return_val(:encryption, text, key, date)
   end
 
   def decrypt(ciphertext, key, date = generate_date)
@@ -17,7 +18,16 @@ class Enigma
     keys = keys(key)
     offsets = offsets(date)
     shifts = Shift.shifts(keys, offsets)
-    decipher(characters, shifts)
+    text = decipher(characters, shifts)
+    return_val(:decryption, text, key, date)
+  end
+
+  def return_val(type, text, key, date)
+    return_hash = Hash.new()
+    return_hash[type] = text
+    return_hash[:key] = key
+    return_hash[:date] = date
+    return_hash
   end
 
   def cipher(characters, shifts)
@@ -52,14 +62,14 @@ class Enigma
     rand.to_s[2..6]
   end
 
-  def generate_date
-    Date.today.strftime('%d%m%y')
-  end
-
   def keys(key)
     keys = []
     key.chars.each_cons(2) { |char| keys << char.join }
     keys.map { |key| key.to_i }
+  end
+
+  def generate_date
+    Date.today.strftime('%d%m%y')
   end
 
   def offsets(date)

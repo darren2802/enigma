@@ -55,10 +55,21 @@ class TestEnigma < Minitest::Test
   end
 
   def test_enigma_encrypt
-    assert_equal "keder ohulw", @enigma.encrypt("hello world", "02715", "040895")
+    return_val = {
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
+    }
+    assert_equal return_val, @enigma.encrypt("hello world", "02715", "040895")
   end
 
   def test_enigma_decrypt
-    assert_equal "hello world", @enigma.decrypt("keder ohulw", "02715", "040895")
+    return_val =
+    {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+    assert_equal return_val, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
 end

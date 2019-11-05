@@ -16,7 +16,7 @@ cipher_text = cipher_file.read.chomp
 cipher_file.close
 
 enigma = Enigma.new
-deciphered = enigma.decrypt(cipher_text, key, date)
+deciphered = enigma.decrypt(cipher_text, key, date)[:decryption]
 
 message_file = File.open(file_message_text, 'w')
 message_file.write(deciphered)
@@ -24,4 +24,4 @@ message_file.close
 
 puts "Created '#{file_message_text}' with the key #{key} and date #{date}"
 
-# ruby ./lib/decrypt.rb ./lib/encrypted.txt ./lib/decrypted.txt 67825 041119
+# ruby ./lib/decrypt.rb ./lib/encrypted.txt ./lib/decrypted.txt 67209 051119
