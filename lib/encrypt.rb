@@ -16,7 +16,7 @@ message_file.close
 enigma = Enigma.new
 key = enigma.generate_key
 date = enigma.generate_date
-ciphered = enigma.encrypt(message_text, key, date)
+ciphered = enigma.encrypt(message_text, key, date)[:encryption]
 
 cipher_file = File.open(file_cipher_text, 'w')
 cipher_file.write(ciphered)
