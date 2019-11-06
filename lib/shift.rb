@@ -28,17 +28,13 @@ class Shift
   end
 
   def self.hash_values(char)
-    a_z_lookup = self.a_z_lookup
+    a_z_lookup = ('a'..'z').to_a << ' '
     index = a_z_lookup.find_index(char)
     if index
       ['y', index]
     else
       ['n', char]
     end
-  end
-
-  def self.a_z_lookup
-    ('a'..'z').to_a << ' '
   end
 
   def self.nested_2_levels

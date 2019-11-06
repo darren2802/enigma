@@ -1,6 +1,7 @@
 require 'Date'
 require_relative './shift'
 require_relative './unshift'
+require_relative './cipher'
 
 class Enigma
 
@@ -9,7 +10,7 @@ class Enigma
     keys = keys(key)
     offsets = offsets(date)
     shifts = Shift.shifts(keys, offsets)
-    text = cipher(characters, shifts)
+    text = Cipher.cipher(characters, shifts)
     return_val(:encryption, text, key, date)
   end
 
@@ -18,7 +19,7 @@ class Enigma
     keys = keys(key)
     offsets = offsets(date)
     shifts = Shift.shifts(keys, offsets)
-    text = decipher(characters, shifts)
+    text = Cipher.decipher(characters, shifts)
     return_val(:decryption, text, key, date)
   end
 
@@ -41,34 +42,6 @@ class Enigma
     return_hash[:key] = key
     return_hash[:date] = date
     return_hash
-  end
-
-  def cipher(characters, shifts)
-    shifted_chars = Shift.shift_chars(characters, shifts)
-    a_z_lookup = Shift.a_z_lookup
-    ciphered = ''
-    shifted_chars.each_value do |value|
-      ciphered += cipher_decipher(value, a_z_lookup)
-    end
-    ciphered
-  end
-
-  def decipher(characters, shifts)
-    unshifted_chars = Unshift.unshift_chars(characters, shifts)
-    a_z_lookup = Shift.a_z_lookup
-    deciphered = ''
-    unshifted_chars.each_value do |value|
-      deciphered += cipher_decipher(value, a_z_lookup)
-    end
-    deciphered
-  end
-
-  def cipher_decipher(value, a_z_lookup)
-    if value[:encrypt?] == 'y'
-      a_z_lookup.at(value[:index] % 27)
-    else
-      value[:index]
-    end
   end
 
   def generate_key
