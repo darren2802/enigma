@@ -44,18 +44,13 @@ class TestEnigma < Minitest::Test
   end
 
   def test_hash_values_in_lookup
-    a_z_lookup = Shift.a_z_lookup
+    a_z_lookup = ('a'..'z').to_a << ' '
     assert_equal ['y', 7], Shift.hash_values('h')
   end
 
   def test_hash_values_not_in_lookup
-    a_z_lookup = Shift.a_z_lookup
+    a_z_lookup = ('a'..'z').to_a << ' '
     assert_equal ['n', '!'], Shift.hash_values('!')
-  end
-
-  def test_a_z_lookup
-    a_z_lookup = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    assert_equal a_z_lookup, Shift.a_z_lookup
   end
 
   def test_nested_2_levels

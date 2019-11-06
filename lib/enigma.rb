@@ -45,7 +45,7 @@ class Enigma
 
   def cipher(characters, shifts)
     shifted_chars = Shift.shift_chars(characters, shifts)
-    a_z_lookup = Shift.a_z_lookup
+    a_z_lookup = ('a'..'z').to_a << ' '
     ciphered = ''
     shifted_chars.each_value do |value|
       ciphered += cipher_decipher(value, a_z_lookup)
@@ -55,7 +55,7 @@ class Enigma
 
   def decipher(characters, shifts)
     unshifted_chars = Unshift.unshift_chars(characters, shifts)
-    a_z_lookup = Shift.a_z_lookup
+    a_z_lookup = ('a'..'z').to_a << ' '
     deciphered = ''
     unshifted_chars.each_value do |value|
       deciphered += cipher_decipher(value, a_z_lookup)
