@@ -82,7 +82,7 @@ class TestEnigma < Minitest::Test
     {
       decryption: "hello world! end",
       key: "19603",
-      date: "051119"
+      date: "061119"
     }
     assert_equal return_val, @enigma.crack("buxpiphslap!dzcp")
   end
