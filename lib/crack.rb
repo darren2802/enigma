@@ -25,4 +25,6 @@ message_file.close
 
 puts "Created '#{file_cracked_text}' with the cracked key #{key} and date #{date}"
 
-# ruby ./lib/crack.rb ./lib/encrypted.txt ./lib/cracked.txt 051119
+# ruby ./lib/crack.rb ./lib/encrypted.txt ./lib/cracked.txt 061119
+
+# Created './lib/cracked.txt' with the cracked key 17844 and date 061119

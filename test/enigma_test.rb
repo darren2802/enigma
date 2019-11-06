@@ -72,4 +72,18 @@ class TestEnigma < Minitest::Test
     }
     assert_equal return_val, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
+
+  def test_enigma_generate_key_crack
+    assert_equal '49621', @enigma.generate_key_crack(49621)
+  end
+
+  def test_enigma_crack
+    return_val =
+    {
+      decryption: "hello world! end",
+      key: "19603",
+      date: "061119"
+    }
+    assert_equal return_val, @enigma.crack("buxpiphslap!dzcp")
+  end
 end
