@@ -30,30 +30,6 @@ class TestEnigma < Minitest::Test
     assert_equal date_today, @enigma.generate_date
   end
 
-  def test_enigma_cipher_decipher_y
-    value = {char: "k", encrypt?: "y", index: 7}
-    a_z_lookup = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    assert_equal 'h', @enigma.cipher_decipher(value, a_z_lookup)
-  end
-
-  def test_enigma_cipher_decipher_n
-    value = {char: "!", encrypt?: "n", index: '!'}
-    a_z_lookup = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    assert_equal '!', @enigma.cipher_decipher(value, a_z_lookup)
-  end
-
-  def test_enigma_cipher
-    characters = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
-    shifts = [3, 27, 73, 20]
-    assert_equal "keder ohulw", @enigma.cipher(characters, shifts)
-  end
-
-  def test_enigma_decipher
-    characters = ["k", "e", "d", "e", "r", " ", "o", "h", "u", "l", "w"]
-    shifts = [3, 27, 73, 20]
-    assert_equal 'hello world', @enigma.decipher(characters, shifts)
-  end
-
   def test_enigma_encrypt
     return_val = {
       encryption: "keder ohulw",

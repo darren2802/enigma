@@ -24,4 +24,4 @@ message_file.close
 
 puts "Created '#{file_message_text}' with the key #{key} and date #{date}"
 
-# ruby ./lib/decrypt.rb ./lib/encrypted.txt ./lib/decrypted.txt 67209 051119
+# ruby ./lib/decrypt.rb ./lib/encrypted.txt ./lib/decrypted.txt 79738 061119
